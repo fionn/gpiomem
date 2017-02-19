@@ -1,0 +1,13 @@
+# vim: ft=systemd
+
+[Unit]
+Description=Allow gpio group access to /dev/gpiomem
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=chown root.gpio /dev/gpiomem
+ExecStart=chmod g+rw /dev/gpiomem
+
+[Install]
+WantedBy=multi-user.target 
